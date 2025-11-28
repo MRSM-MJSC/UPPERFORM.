@@ -153,11 +153,14 @@ function calculatePNG(isFormative) {
             document.getElementById('extra-fields').style.display = show ? 'block' : 'none';
         }
         
-        // Limit semua input number ke 100
+        // Limit semua input number ke 0–100 & block huruf
 document.querySelectorAll('input[type="number"]').forEach(input => {
     input.addEventListener('input', () => {
+        // remove non-digit characters
+        input.value = input.value.replace(/[^0-9]/g, '');
+        // limit value
         if(input.value > 100) input.value = 100;
-        if(input.value < 0) input.value = 0; // optional
+        if(input.value < 0) input.value = 0;
     });
 });
 </script>
